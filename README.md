@@ -9,3 +9,4 @@
 > - day6.完成了ListFragment和drawerlayout侧边栏的UI搭建和数据分配
 > - day7.实现了(在改Theme的基础上加了view罩子)的夜间模式和自定义的Dialog弹出框
 > - day8.抽取了pager对应fragment显示的各种状态的view的基类，给从服务器取得的xml数据设置读写缓存
+> - day9.设置了fragmenttabhost缓存view防止切页销毁，使用了最近新兴的网络请求框架-nohttp
