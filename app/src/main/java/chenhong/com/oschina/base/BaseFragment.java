@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import chenhong.com.oschina.ui.view.LoadingPage;
+import chenhong.com.oschina.util.UIUtils;
 
 /**
  * Created by Administrator on 2016/6/14.
@@ -22,7 +23,7 @@ public abstract class BaseFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mloadingPage = new LoadingPage(getActivity()) {
+        mloadingPage = new LoadingPage(UIUtils.getContext()) {
             @Override
             public View onCreatSuccessView() {
                 //调用自己的抽象方法不然会栈溢出，程序崩溃

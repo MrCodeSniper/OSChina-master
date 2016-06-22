@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class ComprehensivekFragments extends BaseFragment {
     private List<News> data;
 
 
+    private View rootView;// 缓存Fragment view
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +60,23 @@ public class ComprehensivekFragments extends BaseFragment {
 
     @Override
     public View onCreatSuccessView() {
-        View view= UIUtils.inflate(R.layout.refresh_view);
-        srl = (SwipeRefreshLayout) view.findViewById(R.id.swipefreshlayout);
-        lv_refresh = (ListView) view.findViewById(R.id.lv_refresh);
-        lv_refresh.setAdapter(new NewAdapter(data));
-        return view;
+        //缓存tab
+        if (rootView == null)
+        {
+            rootView = UIUtils.inflate(R.layout.refresh_view);
+            lv_refresh = (ListView) rootView.findViewById(R.id.lv_refresh);
+            lv_refresh.setAdapter(new NewAdapter(data));
+        }
+        // 缓存的rootView需要判断是否已经被加过parent，如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null)
+        {
+            parent.removeView(rootView);
+        }
+        return rootView;
     }
+
+
 
 
     class NewAdapter extends MyBaseListAdapter<News>{

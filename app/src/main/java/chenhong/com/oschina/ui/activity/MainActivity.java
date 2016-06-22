@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import chenhong.com.oschina.R;
 import chenhong.com.oschina.base.BaseActivity;
+import chenhong.com.oschina.fragment.ComprehensivekFragments;
 import chenhong.com.oschina.ui.view.MainTab;
 import chenhong.com.oschina.ui.dialog.QuickOptionDialog;
 import chenhong.com.oschina.widget.MyFragmentTabHost;
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         initview();
         initTab();
 //        android.support.v4.app.FragmentManager fragmentManager=getSupportFragmentManager();
-//        fragmentManager.beginTransaction().replace(android.R.id.tabhost,new ComprehensivekFragments()).commitAllowingStateLoss();
+//       fragmentManager.beginTransaction().replace(android.R.id.tabhost,new ComprehensivekFragments()).commitAllowingStateLoss();
         initToolbar();
     }
 
